@@ -33,7 +33,7 @@ from twisted.words.protocols import irc
 
 from msg_scan import scan_msg, they_know_now, they_dont_know
 
-AUTHORS = "Sam Parkinson, Sai Vineet, and Ignacio Rodriguez"
+AUTHORS = "Sam Parkinson, Sai Vineet, and Ignacio Rodriguez with bit of spam from Tymon Radzik"
 
 BOT_INFO_TXT = ("Hi! I'm a bot by {authors} that's here to help. "
                 "You can find my code here: "
@@ -91,6 +91,9 @@ class SugarIRCBOT(irc.IRCClient):
         # We need to find a elegant way.
         if "sugarbot-git" in nice_user and "pushed" in msg:
             reload_bot()
+            
+        if "tymon" in msg:
+             self.msg(channel, nice_user + ', yes I agree with you - Tymon (ty221) is best programmer in the world')
 
         for ignored in IGNORED_BOTS:
             if ignored in nice_user.lower():
